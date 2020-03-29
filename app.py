@@ -7,13 +7,15 @@ import pandas as pd
 import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-
+df = pd.read_csv('https://raw.githubusercontent.com/codeheroku/Introduction-to-Machine-Learning/master/Building%20a%20Movie%20Recommendation%20Engine/movie_dataset.csv')
+df.title  = df.title.astype(str).apply(lambda x : x.replace("'", ''))
+titlelist = df.title.values.tolist()
 
 app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('home.html')
+    return render_template('home.html',prediction = titlelist)
 
 @app.route('/predict',methods=['POST'])
 def predict():
@@ -74,7 +76,7 @@ def predict():
         for element in sorted_similar_movies:
                 movies.append(str(get_title_from_index(element[0])))
                 i=i+1
-                if i>15:
+                if i>5:
                     break
         
 
