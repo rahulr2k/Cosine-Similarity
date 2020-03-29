@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+	<title>Movie Recommender</title>
+	
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content="">
+     <meta name="team" content="">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='owl.carousel.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='owl.theme.default.min.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='font-awesome.min.css') }}">
+     <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='tooplate-style.css') }}">
+
+
+
+
+
+     <!-- MAIN CSS -->
+
+
+</head>
+<body>
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+     <!-- MENU -->
+     <section class="navbar custom-navbar navbar-fixed-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+                    </button>
+
+                    <!-- lOGO TEXT HERE -->
+                    <a href="home.html" class="navbar-brand">Recommend movies</a>
+               </div>
+
+               <!-- MENU LINKS -->
+               <div class="collapse navbar-collapse">
+                    
+                    
+               </div>
+
+          </div>
+     </section>
+
+
+     <!-- FEATURE -->
+     <section id="home" data-stellar-background-ratio="0.5">
+          <div class="overlay"></div>
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-offset-3 col-md-6 col-sm-12">
+                         <div class="home-info">
+                              
+                              <h1>Find similar movies  !</h1>
+
+                              <form action="{{ url_for('predict')}}" method="POST" class="online-form">
+                              
+                              <br>
+                              <!-- <input type="text" name="comment"/> -->
+                              
+                              <br/>
+
+                              
+                             
+                                   <input type=textarea name="message"  class="form-control" placeholder="Enter movie name you like">
+                                   <button type="submit" class="form-control">Get started</button>
+                              </form>
+                         </div>
+                    </div>
+
+               </div>
+          </div>
+     </section>
+
+
+     
+
+     
+     
+
+
+
+
+     <!-- SCRIPTS -->
+     <script src="static/jquery.js"></script>
+     <script src="static/bootstrap.min.js"></script>
+     <script src="static/jquery.stellar.min.js"></script>
+     <script src="static/owl.carousel.min.js"></script>
+     <script src="static/smoothscroll.js"></script>
+     <script src="static/custom.js"></script>
+
+</body>
+</html>
