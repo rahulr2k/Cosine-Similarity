@@ -56,12 +56,21 @@ def predict():
         #print "Combined Features:", df["combined_features"].head()
 
         ##Step 4: Create count matrix from this new combined column
-        cv = CountVectorizer()
+       
 
-        count_matrix = cv.fit_transform(df["combined_features"])
+        
+        
+
+        with open('vector.pkl', 'rb') as f:
+             count_matrix = pickle.load(f)
 
         ##Step 5: Compute the Cosine Similarity based on the count_matrix
-        cosine_sim = cosine_similarity(count_matrix) 
+        
+
+
+        with open('cosine_sim.pkl', 'rb') as f:
+             cosine_sim = pickle.load(f)
+
         movie_user_likes = message
 
         ## Step 6: Get index of this movie from its originalTitle
