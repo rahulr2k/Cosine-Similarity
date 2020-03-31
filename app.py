@@ -1,4 +1,4 @@
-﻿from flask import Flask,render_template,url_for,request
+from flask import Flask,render_template,url_for,request
 import pandas as pd 
 import pickle
 import string
@@ -10,30 +10,6 @@ from sklearn.metrics.pairwise import cosine_similarity
 df = pd.read_csv("MPR.csv")
 df.originalTitle  = df.originalTitle.astype(str).apply(lambda x : x.replace("'", ''))
 originalTitlelist = df.originalTitle.values.tolist()
-
-
-features = ['keywords','genres']
-##Step 3: Create a column in DF which combines all selected features
-for feature in features:
-    df[feature] = df[feature].fillna('')
-
-def combine_features(row):
-    try:
-        return row['keywords'] +" "+row["genres"]
-    except:
-        print ("Error:", row)	
-
-df["combined_features"] = df.apply(combine_features,axis=1)
-
-#print "Combined Features:", df["combined_features"].head()
-
-##Step 4: Create count matrix from this new combined column
-cv = CountVectorizer()
-
-count_matrix = cv.fit_transform(df["combined_features"])
-
-##Step 5: Compute the Cosine Similarity based on the count_matrix
-cosine_sim = cosine_similarity(count_matrix)
 
 app = Flask(__name__)
 
@@ -64,7 +40,28 @@ def predict():
 
        ##Step 2: Select Features
         
-         
+        features = ['keywords','genres']
+        ##Step 3: Create a column in DF which combines all selected features
+        for feature in features:
+            df[feature] = df[feature].fillna('')
+
+        def combine_features(row):
+            try:
+                return row['keywords'] +" "+row["genres"]
+            except:
+                print ("Error:", row)	
+
+        df["combined_features"] = df.apply(combine_features,axis=1)
+
+        #print "Combined Features:", df["combined_features"].head()
+
+        ##Step 4: Create count matrix from this new combined column
+        cv = CountVectorizer()
+
+        count_matrix = cv.fit_transform(df["combined_features"])
+
+        ##Step 5: Compute the Cosine Similarity based on the count_matrix
+        cosine_sim = cosine_similarity(count_matrix) 
         movie_user_likes = message
 
         ## Step 6: Get index of this movie from its originalTitle
