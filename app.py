@@ -8,6 +8,19 @@ import numpy as np
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 df = pd.read_csv("mpr2.csv")
+
+features = ['keywords','genres']
+##Step 3: Create a column in DF which combines all selected features
+for feature in features:
+    df[feature] = df[feature].fillna('')
+
+def combine_features(row):
+    try:
+        return row['keywords'] +" "+row["genres"]
+    except:
+        print ("Error:", row)   
+
+df["combined_features"] = df.apply(combine_features,axis=1)
 df.originalTitle  = df.originalTitle.astype(str).apply(lambda x : x.replace("'", ''))
 originalTitlelist = df.originalTitle.values.tolist()
 
@@ -20,7 +33,7 @@ def home():
 @app.route('/predict',methods=['POST'])
 def predict():
     
-    
+   
     if request.method == 'POST':
 
         message = request.form.get('message')
@@ -40,37 +53,16 @@ def predict():
 
        ##Step 2: Select Features
         
-        features = ['keywords','genres']
-        ##Step 3: Create a column in DF which combines all selected features
-        for feature in features:
-            df[feature] = df[feature].fillna('')
-
-        def combine_features(row):
-            try:
-                return row['keywords'] +" "+row["genres"]
-            except:
-                print ("Error:", row)	
-
-        df["combined_features"] = df.apply(combine_features,axis=1)
-
+        
         #print "Combined Features:", df["combined_features"].head()
 
         ##Step 4: Create count matrix from this new combined column
-       
+        cv = CountVectorizer()
 
-        
-        
-
-        with open('vector.pkl', 'rb') as f:
-             count_matrix = pickle.load(f)
+        count_matrix = cv.fit_transform(df["combined_features"])
 
         ##Step 5: Compute the Cosine Similarity based on the count_matrix
-        
-
-
-        with open('cosine_sim.pkl', 'rb') as f:
-             cosine_sim = pickle.load(f)
-
+        cosine_sim = cosine_similarity(count_matrix) 
         movie_user_likes = message
 
         ## Step 6: Get index of this movie from its originalTitle
@@ -87,8 +79,9 @@ def predict():
         for element in sorted_similar_movies:
                 movie0.append(str(get_originalTitle_from_index(element[0])))
                 i=i+1
-                if i>7:
+                if i>8:
                     break
+        movie0 = movie0[1:]
         
         movie1 = []
         movie2 = []
