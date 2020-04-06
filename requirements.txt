@@ -26,7 +26,8 @@ cffi==1.12.3
 chardet==3.0.4
 Click==7.0
 cloudpickle==1.2.2
-
+beautifulsoup4==4.8.2
+requests==2.23.0
 dask==2.5.2
 decorator==4.4.0
 defusedxml==0.6.0

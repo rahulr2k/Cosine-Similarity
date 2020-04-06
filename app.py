@@ -1,22 +1,27 @@
-from flask import Flask,render_template,url_for,request
+﻿from flask import Flask,render_template,url_for,request
 import pandas as pd 
 import pickle
 import string
 import re
 import pandas as pd
 import numpy as np
+from bs4 import BeautifulSoup as bs
+import requests
+
+
+base = "https://www.youtube.com/results?search_query="
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-df = pd.read_csv("mpr2.csv")
+df = pd.read_csv("mpr8.csv")
 
-features = ['keywords','genres']
+features = ['keywords','genres','nas']
 ##Step 3: Create a column in DF which combines all selected features
 for feature in features:
     df[feature] = df[feature].fillna('')
 
 def combine_features(row):
     try:
-        return row['keywords'] +" "+row["genres"]
+        return row['keywords'] +" "+row["genres"]+" "+row["nas"]
     except:
         print ("Error:", row)   
 
@@ -49,20 +54,21 @@ def predict():
             return df[df.originalTitle == index]["poster"].values[0]
         def get_url_from_index(index):
             return df[df.originalTitle == index]["URL"].values[0]
-        ##################################################
+        def get_ytb_from_index(index):
+            return df[df.originalTitle == index]["youtube"].values[0]
 
-       ##Step 2: Select Features
-        
-        
-        #print "Combined Features:", df["combined_features"].head()
+        def get_kwd_from_index(index):
+            return df[df.originalTitle == index]["keywords"].values[0]
 
-        ##Step 4: Create count matrix from this new combined column
-        cv = CountVectorizer()
 
-        count_matrix = cv.fit_transform(df["combined_features"])
 
-        ##Step 5: Compute the Cosine Similarity based on the count_matrix
-        cosine_sim = cosine_similarity(count_matrix) 
+
+        with open('count_matrix.pkl', 'rb') as f:
+            count_matrix = pickle.load(f)
+
+        with open('cosine_sim.pkl', 'rb') as f:
+            cosine_sim = pickle.load(f)
+
         movie_user_likes = message
 
         ## Step 6: Get index of this movie from its originalTitle
@@ -79,20 +85,24 @@ def predict():
         for element in sorted_similar_movies:
                 movie0.append(str(get_originalTitle_from_index(element[0])))
                 i=i+1
-                if i>8:
+                if i>7:
                     break
-        movie0 = movie0[1:]
+
         
         movie1 = []
         movie2 = []
+        movie3 = []
+        movie4 = []
         
         for element in movie0:
-            
+                        
             movie1.append(get_url_from_index(element))
             movie2.append(get_poster_from_index(element))
+            movie3.append(get_ytb_from_index(element))
+            movie4.append(get_kwd_from_index(element))
         
 
-    return render_template('result.html',movie0=movie0,movie1=movie1,movie2=movie2)
+    return render_template('result.html',movie0=movie0,movie1=movie1,movie2=movie2,movie3=movie3,movie4=movie4)
 
 
 

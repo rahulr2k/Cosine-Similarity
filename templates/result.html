@@ -4,7 +4,6 @@
 	<head>
 		<title>Movie Recommender</title>
 		<meta charset="utf-8" />
-		<meta name="theme-color" content="#000000" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="{{url_for ('static', filename = 'assets/css/main.css')}} " />
 		<noscript><link rel="stylesheet" href="{{url_for ('static', filename = 'assets/css/noscript.css')}} " /></noscript>
@@ -30,9 +29,15 @@
             {% for i in range(8) %}
 						<article class="thumb">
 							<a href="{{movie2[i]}}" class="image"><img src="{{movie2[i]}}" alt="" target="_blank" ></a>
-							<h2>{{movie0[i]}}</h2>
-							<p> <a target="_blank" href="{{movie1[i]}}"> click to open in IMDB </a> </p>
-						</article>
+							<h2 > {{movie0[i]}}</h2>
+							<p> <a target="_blank" href="{{movie1[i]}}"> open in IMDB </a> <br> This movie contains following keywords <br><br> {{movie4[i]}} <br> <br> Watch top results of this movie in YouTube <br>  <br>  <br>   </p>
+							
+						
+						
+							<div class="youtube" style="display:inline-block;height:100%;vertical-align:bottom; padding-top: 10px;">
+								
+								<iframe src="{{movie3[i]}}" frameborder="0" allowfullscreen autoplay="True"></iframe>
+							</div></article>
             {% endfor %}
 						
 						

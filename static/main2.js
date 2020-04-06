@@ -14,9 +14,8 @@
 		breakpoints({
 			xlarge:  [ '1281px',  '1680px' ],
 			large:   [ '981px',   '1280px' ],
-			medium:  [ '737px',   '980px'  ],
-			small:   [ '481px',   '736px'  ],
-			xsmall:  [ null,      '480px'  ]
+			medium:  [ '737px',   '980px'  ]
+
 		});
 
 	// Hack: Enable IE workarounds.
@@ -255,10 +254,10 @@
 				onPopupOpen: function() { $body.addClass('modal-active'); },
 				overlayOpacity: 0,
 				popupCloserText: '',
-				popupHeight: 150,
-				popupLoaderText: '',
-				popupSpeed: 300,
-				popupWidth: 150,
+				
+				popupLoaderText: 'Finding Similarities',
+				popupSpeed: 400,
+				
 				selector: '.thumb > a.image',
 				usePopupCaption: true,
 				usePopupCloser: true,

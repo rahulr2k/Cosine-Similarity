@@ -40,13 +40,18 @@
 							'static/images/bg01.jpg': 'center',
 							'static/images/bg02.jpg': 'center',
 							'static/images/bg03.jpg': 'center',
-							'static/images/bg04.jpg': 'center'
+							'static/images/bg04.jpg': 'center',
+							'static/images/bg05.jpg': 'center',
+							'static/images/bg06.jpg': 'center',
+							'static/images/bg07.jpg': 'center'
+							
+							
 							
 							
 						},
 
 					// Delay.
-						delay: 6000
+						delay: 5000
 
 				};
 

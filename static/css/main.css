@@ -288,7 +288,7 @@ h1 {
   line-height: 1.25em; }
 
 h2 {
-  font-size: 1.75em;
+  font-size: 3.75em;
   line-height: 1.5em; }
 
 h3 {
@@ -360,7 +360,7 @@ header p {
   margin: 0 0 1.5em 0; }
 
 header h2 + p {
-  font-size: 1.25em;
+  font-size: 3.25em;
   margin-top: -1em;
   line-height: 1.5em; }
 
