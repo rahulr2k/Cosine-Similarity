@@ -55,6 +55,12 @@ def predict():
 
         def get_kwd_from_index(index):
             return df[df.originalTitle == index]["keywords"].values[0]
+        def get_gen_from_index(index):
+            return df[df.originalTitle == index]["genres"].values[0]
+        def get_ar_from_index(index):
+            return df[df.originalTitle == index]["averageRating"].values[0]
+        def get_nv_from_index(index):
+            return df[df.originalTitle == index]["numVotes"].values[0]
 
 
 
@@ -89,6 +95,9 @@ def predict():
         movie2 = []
         movie3 = []
         movie4 = []
+        movie5 = []
+        movie6 = []
+        movie7 = []
         
         for element in movie0:
                         
@@ -96,9 +105,12 @@ def predict():
             movie2.append(get_poster_from_index(element))
             movie3.append(get_ytb_from_index(element))
             movie4.append(get_kwd_from_index(element))
+            movie5.append(get_gen_from_index(element))
+            movie6.append(get_ar_from_index(element))
+            movie7.append(get_nv_from_index(element))
         
 
-    return render_template('result.html',movie0=movie0,movie1=movie1,movie2=movie2,movie3=movie3,movie4=movie4)
+    return render_template('result.html',movie0=movie0,movie1=movie1,movie2=movie2,movie3=movie3,movie4=movie4,movie5 = movie5,movie6=movie6,movie7=movie7)
 
 
 
