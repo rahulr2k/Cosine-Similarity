@@ -27,16 +27,21 @@
 				<!-- Main -->
 					<div id="main">
             {% for i in range(8) %}
-						<article class="thumb"><br><br><br><br><br><br><br><br>
+						<article class="thumb">
 							<a href="{{movie2[i]}}" class="image"><img src="{{movie2[i]}}" alt="" target="_blank" ></a>
 							<h2 > <font size="4">{{movie0[i]}}</font></h2>
-							<p> <a target="_blank" href="{{movie1[i]}}"> open in IMDB </a>  <br><br> <li> Genre : <em>{{movie5[i]}} </em> </li>  <br> <li> Average Rating :  <em>{{movie6[i]}}</em></li> <br> <li> Number of user votes : <em>{{movie7[i]}}</em> </li> <br> <br> <br><br><br><br><br> <br> Watch top results of this movie in YouTube <br>  <br>  <br>   </p>
+							<p> <br> <li> Genre : <em><b>{{movie5[i]}} </b></em> </li>
+								  <br> <li> Average Rating :  <b>{{movie6[i]}}</b></li>
+								   <br> <li> Number of user votes : <em><b>{{movie7[i]}}</b></em> </li>
+								   <br><br><a target="_blank" href="{{movie1[i]}}"> Find more in IMDB </a> 
+								      </p>
+							
 							
 						
 						
-							<div class="youtube" style="display: inline-block; vertical-align: bottom; padding-bottom: 30px;">
+							<div class="youtube" style="display:block;height:100%;vertical-align:bottom; padding-bottom: 20px;">
 								
-								<iframe width="320" height="250" src="{{movie3[i]}}" frameborder="0" allowfullscreen autoplay=1></iframe>
+								<iframe  src="{{movie3[i]}}" frameborder="0" allowfullscreen="True" autoplay="True"></iframe>
 							</div></article>
             {% endfor %}
 						
