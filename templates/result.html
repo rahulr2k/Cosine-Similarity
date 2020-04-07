@@ -16,7 +16,7 @@
 
 				<!-- Header -->
 					<header id="header">
-						<h1><a href="{{ url_for('home.html')}}"><strong>Movie </strong> Recommender </a></h1>
+						<h1><a href="index.html"><strong>Movie </strong> Recommender </a></h1>
 						<nav>
 							<ul>
 								<li><a href="#footer" class="icon solid fa-info-circle">How it works ?</a></li>
@@ -29,12 +29,12 @@
             {% for i in range(8) %}
 						<article class="thumb">
 							<a href="{{movie2[i]}}" class="image"><img src="{{movie2[i]}}" alt="" target="_blank" ></a>
-							<h2 > <font size="5.5">{{movie0[i]}}</font></h2>
+							<h2 > <font size="4.5">{{movie0[i]}}</font></h2>
 							<p> <br> <li> <font size="3">Genre : <em><b>{{movie5[i]}} </b></em></font> </li>
 								  <br> <li> <font size="3">Average Rating :  <b>{{movie6[i]}}</b></font></li>
 								   <br> <li><font size="3"> Number of user votes : <em><b>{{movie7[i]}}</b></em> </font></li>
 								   <br><br><a target="_blank" href="{{movie1[i]}}"> <font size="3.5">Find more in IMDB </font></a> 
-								      <br><br><br><br></p>
+								      </p>
 							
 							
 						
@@ -53,22 +53,16 @@
 						<div class="inner split">
 							<div>
 								<section>
-									<h2>Recommendation system using Cosine similarly</h2>
-									<p>This is an experimental machine learning project. The recommendations are made by finding the similarity between the selected movies and other movies , for that we have collected all the keywords related to movies using imdb data.Since this website is hosted in heroku we have limitations in the amount of data. So we filtered movies based on region , language user voting count, average rating, release year .So now there are ~4000 most popular movies in this database. This similarity prediction is done using cosine similarity ..... GitHub repository link is below</p>
+									<h2>Magna feugiat sed adipiscing</h2>
+									<p>This is an experimental machine learning project . This similarity prediction is done using cosine similarity .....</p>
 								</section>
 								<section>
-									<h2>Find it in GitHub</h2>
+									<h2>Follow me on ...</h2>
 									<ul class="icons">
 										
-										
-										<li><a href="https://github.com/rahulr2k/Cosine-Similarity/" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
-                                </section>	
-                                <section>	
-									</ul>
-                                    <h2>The team</h2>
-									<ul class="icons">
-										<li><a href="https://www.linkedin.com/in/rahulr2k" class="icon brands fa-linkedin"><span class="label">LinkedIn</span>Rahul Babu K</a></li>
-										<li><a href="https://www.linkedin.com/in/s-ravishankar-nayar-5007a7145" class="icon brands fa-linkedin"><span class="label">LinkedIn</span>S Ravishankar</a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+										<li><a href="#" class="icon brands fa-linkedin-in"><span class="label">LinkedIn</span></a></li>
 									</ul>
 								</section>
 								
