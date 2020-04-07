@@ -38,7 +38,7 @@ def predict():
     if request.method == 'POST':
 
         message = request.form.get('message')
-        print (message)
+        
                 
         ###### helper functions. Use them when needed #######
         def get_originalTitle_from_index(index):
